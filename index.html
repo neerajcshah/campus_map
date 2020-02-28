@@ -8,10 +8,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Bare - Start Bootstrap Template</title>
+  <title>Signal Strength Mapper</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="custom.css" rel="stylesheet">
+
+  <!-- Google Imports -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvJJ9FS1U-nJK071ECIioWVeEmxhTzMK4&libraries=visualization"></script>
+  <script src="myJS.js"></script>
+  <script src="init.js"></script>
 
 </head>
 
@@ -20,7 +27,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <a class="navbar-brand" href="#">WiFi Signal Strength</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,32 +39,33 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="about.html">About</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
+
   <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-        <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
-        <ul class="list-unstyled">
-          <li>Bootstrap 4.2.1</li>
-          <li>jQuery 3.3.1</li>
-        </ul>
-      </div>
-    </div>
+  <div style="position: relative; width: 90%; margin-left:auto; margin-right; auto;">
+    <div id="map" style="height: 850px; width: 90%"></div>
+
+
+
+	<div class='temp'>
+
+		<button type="button" class="btn btn-outline-primary" id="toggle" onclick="toggleHeat()" >Toggle HeatMap</button>
+		<button type="button" class="btn btn-outline-primary" onclick="toggleAPs()">Show APs</button>
+
+		<input type="text" class="form-control" id="searchBox" placeholder="Enter MAC Address.." name="macAddr">
+
+		<button type="submit" class="btn btn-primary" id="macSearch" onclick='python(document.getElementsByName("macAddr")[0].value)'>Submit</button>
+
+	</div>
   </div>
+
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
